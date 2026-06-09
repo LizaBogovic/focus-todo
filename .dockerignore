@@ -1,0 +1,11 @@
+node_modules
+dist
+dist-ssr
+.git
+.idea
+.DS_Store
+*.log
+npm-debug.log*
+docker-compose*.yml
+demo/build
+demo/.gradle

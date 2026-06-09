@@ -2,6 +2,9 @@ import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 
 // ─── CONFIGURATION ────────────────────────────────────────────────────────────
 const API_BASE = "/api";
+const API_LABEL = API_BASE.startsWith("http")
+    ? new URL(API_BASE).host
+    : window.location.host;
 
 const CATEGORIES = [
   { id: "work", label: "Work", color: "#6366f1" },
@@ -389,7 +392,7 @@ export default function App() {
                 <span style={{ fontSize: 18, fontWeight: 700, color: "#1e293b", fontFamily: "'Fraunces', serif" }}>Focus</span>
               </div>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 8, flexWrap: "wrap" }}>
-                <span style={{ fontSize: 12, color: "#6366f1", background: "#ede9fe", padding: "4px 10px", borderRadius: 6, fontWeight: 600 }}>⚡ {new URL(API_BASE).host}</span>
+                <span style={{ fontSize: 12, color: "#6366f1", background: "#ede9fe", padding: "4px 10px", borderRadius: 6, fontWeight: 600 }}>⚡ {API_LABEL}</span>
                 <input ref={importInputRef} type="file" accept="application/json,.json" onChange={handleImportFile} style={{ display: "none" }} />
                 <button onClick={handleExport} disabled={loading} title="Export visible tasks" style={{ width: 36, height: 36, borderRadius: 10, border: "1.5px solid #e2e8f0", background: "#fff", color: "#64748b", cursor: loading ? "default" : "pointer", fontSize: 16, fontWeight: 700, fontFamily: "inherit", display: "flex", alignItems: "center", justifyContent: "center", opacity: loading ? .6 : 1 }}>
                   ⇩
